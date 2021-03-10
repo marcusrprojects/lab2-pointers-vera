@@ -58,11 +58,16 @@ char** command_parse(char* line, int* foreground) {
 void command_show(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
-
-  // IMPLEMENT ME
-
+  //printf("%s %s %\n", command,command++,command+2);
+  for (char** q = command; *q; q++) {
+	printf("'");
+	for (char* p = *q; *p; p++) { //make p a char*/string
+		printf("%c",*p);
+  	}
+  printf("' ");
+  }
+  printf("\n");
 }
-
 /**
  * command_print:
  *
@@ -76,8 +81,17 @@ void command_show(char** command) {
 void command_print(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
+  for (char** q = command; *q; q++) {
+	for (char* p = *q; *p; p++) { //make p a char*/string
+		printf("%c",*p);
+         }
+   printf(" ");
+   }
+  // printf("\n");
 
-  // IMPLEMENT ME
+  //for (char* p = *command; *p; p++) {
+//	printf("%c",*p);
+ // }
 
 }
 
