@@ -1,7 +1,7 @@
 /**
  * Lab 2 - Program Pointers
  *
- * <YOUR NAME(S) HERE>
+ * <Hamby and Ribeiro>
  *
  * command.c - Source file with your parsing library implementation.
  *
@@ -40,9 +40,25 @@ char** command_parse(char* line, int* foreground) {
   // Check arguments: must be non-NULL pointers.
   assert(line);
   assert(foreground);
+//CHECKING FIRST FOR FORE/BACKGROUND STATUS
 
+//LOOP THROUGH COMMAND SHOW THEN PRINT
+
+if (*command  != '&'){
+ *foreground = 1;} 
+
+//	IF IT'S A BACKGROUND THEN PARSE
+
+//IF FOREGROUND, MAKE AN ARRAY
+//2. HOW MANY WORDS?
+//3.ALLOCATE SPACE
+
+//IF NO WHITESPACE, RETURN NULL
+else //check for whitespace
   // IMPLEMENT ME
-
+ // while (line != '\0'){
+	if 
+//check if background command
   return NULL;
 }
 
