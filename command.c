@@ -40,27 +40,85 @@ char** command_parse(char* line, int* foreground) {
   // Check arguments: must be non-NULL pointers.
   assert(line);
   assert(foreground);
-//CHECKING FIRST FOR FORE/BACKGROUND STATUS
 
-//LOOP THROUGH COMMAND SHOW THEN PRINT
+int wordCount = 0; 
 
-if (*command  != '&'){
- *foreground = 1;} 
+int ampersandPresent = 0;
+for (char* q = line; *q; q++){ //gives us chars
+//replaced w line (cmd)
+//look through command array (from command line)
+	//for (char* p = *q; *p; p++){
 
-//	IF IT'S A BACKGROUND THEN PARSE
+	int spacesPresent = 0;
 
-//IF FOREGROUND, MAKE AN ARRAY
-//2. HOW MANY WORDS?
-//3.ALLOCATE SPACE
-
-//IF NO WHITESPACE, RETURN NULL
-else //check for whitespace
-  // IMPLEMENT ME
- // while (line != '\0'){
-	if 
-//check if background command
-  return NULL;
+	if (ampersandPresent && (*q != ' ')){
+		//printf("Invalid word.");
+		return NULL; 
 }
+	if (*q == '&') {
+		ampersandPresent++;
+		*foreground = 1;
+}
+	if (*q == ' ') {
+		spacesPresent++;
+}
+
+	else if (spacesPresent) { //new word
+	wordCount++;
+	spacesPresent = 0;
+
+}
+
+	wordCount++;
+}
+
+//go into line
+char** topCmdArray = (char**)malloc(sizeof(char*) * wordCount); //stores words
+
+char** pointer = topCmdArray;
+int spacesPresent = 0;
+int charCount = 1; //start with 1 to represent null char at end of string
+
+for (char* q = line; *q; q++){ //gives chars as *q
+
+	if ((*q!=' ')) {
+	charCount++;
+	spacesPresent = 0;
+}
+	else if (!spacesPresent){ //if no spaces prior to this, then keep going
+	spacesPresent++;
+	pointer++;
+	*pointer = (char*)malloc(sizeof(char)*charCount);//malloc
+	charCount = 0;
+}
+//counter for indv. chars
+//parallel for first loop but targetting words in line
+	//for (char* m = *q; *m; m++){ //count chars
+	//}
+}
+	char** curIndex = topCmdArray;
+	char* curChar = *curIndex;
+	int spaceCount = 0;
+	for (char** s = topCmdArray; *s; s++) {
+		for (char* h = *s; *s; h++){ //h being single char
+		
+			if (*h != ' ') { //copy in a letter
+				spaceCount = 0;
+				curChar = h;
+				curChar++;
+			}
+
+			else if  (!spaceCount) { //when dealing with spaces
+				h++;
+				h =  NULL;
+				spaceCount++;
+				curIndex++;
+				curChar = *curIndex;
+			}
+		}
+
+	}
+return topCmdArray;}
 
 /**
  * command_show:
@@ -123,8 +181,12 @@ void command_print(char** command) {
 void command_free(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
-
-  // IMPLEMENT ME
-
+        // for (char** q = line; *q; q++){
+ //int charCount = 0;
+ //counter for indv. chars
+ //parallel for first loop but targetting words in line
+ //        for (char* m = *n; *m; m++){ 
+ //        charCount++;
+ //}       
+ //        free(char*)((charCount + 1) * char);
 }
-
