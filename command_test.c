@@ -25,11 +25,13 @@
 static char* NANO_CMD[] = { "nano", "foo.c", NULL };
 static char* GCC_CMD[] = { "gcc", "-Wall", "-o", "foo", "foo.c", NULL };
 static char* YOUR_CMD[] = { "YOUR", "COMMAND", "ARRAY", "HERE", NULL };
+static char* ANOTHER_CMD1[] = {"This", "is", "another", "test", NULL };
 
 static char** COMMAND_ARRAYS[] = {
   NANO_CMD,
   GCC_CMD,
   YOUR_CMD,
+  ANOTHER_CMD1,
 };
 
 /*
@@ -47,6 +49,23 @@ static char* COMMAND_LINES[] = {
   "YOUR COMMAND LINE HERE",
 };
 
+static char* CMD_TEST1[] = {
+	"nano & hello.",
+	"nano& hello.",
+	" nano& hello.",
+};
+
+static char* CMD_TEST2[] = {
+	"nano & hello.",
+	"&should be invalid first word.",
+	" & another invalid",
+};
+
+static char* CMD_TEST3[] = {
+	"uh oh & &",
+	"last line was invalid",
+	"& & hi",
+};
 
 /**
  * Tests the behavior of all library functions on the given command line.
@@ -66,6 +85,8 @@ void test_all(char* command) {
     printf("Freed command array.\n\n");
   } else {
     printf("Invalid command.\n\n");
+    printf("/n");
+    printf("/n");
   }
 }
 
@@ -97,7 +118,26 @@ int main(int argc, char** argv) {
   for (int i = 0; i < num_command_lines; i++) {
     test_all(COMMAND_LINES[i]);
   }
+
+//testing other test functions
+  int num_cmd_test1 = sizeof(CMD_TEST1) / sizeof(char*);
+  printf("Testing command_parse...\n\n");
+  for (int i = 0; i < num_cmd_test1; i++) {
+    test_all(CMD_TEST1[i]);
+  }
   
+  int num_cmd_test2 = sizeof(CMD_TEST2) / sizeof(char*);
+  printf("Testing command_parse...\n\n");
+  for (int i = 0; i < num_cmd_test2; i++) {
+    test_all(CMD_TEST2[i]);
+  }
+
+  int num_cmd_test3 = sizeof(CMD_TEST3) / sizeof(char*);
+  printf("Testing command_parse...\n\n");
+  for (int i = 0; i < num_cmd_test3; i++) {
+    test_all(CMD_TEST3[i]);
+  }
+
   printf("All tests finished.\n");
   // by convention, returning 0 from mains means success,
   // while returning nonzero means an error occurred.
