@@ -1,7 +1,7 @@
 /**
  * Lab 2 - Program Pointers
  *
- * <Hamby and Ribeiro>
+ * <Sofia Hamby and Marcus Ribeiro>
  *
  * command.c - Source file with your parsing library implementation.
  *
@@ -42,83 +42,110 @@ char** command_parse(char* line, int* foreground) {
   assert(foreground);
 
 int wordCount = 0; 
-
+int spaceCount = 0;
+int *foreground = 1; 
 int ampersandPresent = 0;
-for (char* q = line; *q; q++){ //gives us chars
-//replaced w line (cmd)
-//look through command array (from command line)
+int spacesPresent = 0;
+
+	for (char* q = line; *q; q++){ //gives us chars
+	//replaced w line (cmd)
+	//look through command array (from command line)
 	//for (char* p = *q; *p; p++){
+	//int spacesPresent = 0;
 
-	int spacesPresent = 0;
+	//Here we check for foreground/background status and hence the validity of different statements
 
-	if (ampersandPresent && (*q != ' ')){
+		if (ampersandPresent && (*q != ' ')){
 		//printf("Invalid word.");
-		return NULL; 
-}
-	if (*q == '&') {
+		return NULL;  //null for invalid
+		}
+
+		//sets foreground status if & symbol is there
+
+		if (*q == '&') {
 		ampersandPresent++;
-		*foreground = 1;
-}
-	if (*q == ' ') {
+		*foreground = 0;
+		}
+
+		//space count used to travel through 
+		if (*q == ' ') {
 		spacesPresent++;
-}
+		}
 
-	else if (spacesPresent) { //new word
-	wordCount++;
-	spacesPresent = 0;
-
-}
-
-	wordCount++;
-}
+		else if (spacesPresent) { //new word
+		wordCount++; //add to counter
+		spacesPresent = 0; //reset space counter to make space for new words
+		}
+	}
+	
+wordCount++;
 
 //go into line
-char** topCmdArray = (char**)malloc(sizeof(char*) * wordCount); //stores words
+char** topCmdArray = (char**)malloc(sizeof(char*) * (wordCount + 1)); //stores words
+//start at larger level
 
 char** pointer = topCmdArray;
-int spacesPresent = 0;
+spacesPresent = 0;
 int charCount = 1; //start with 1 to represent null char at end of string
+int totalChars = 0;
 
-for (char* q = line; *q; q++){ //gives chars as *q
+	for (char* q = line; *q; q++){ //gives chars as *q
+	totalChars++;
 
-	if ((*q!=' ')) {
-	charCount++;
-	spacesPresent = 0;
-}
-	else if (!spacesPresent){ //if no spaces prior to this, then keep going
-	spacesPresent++;
-	pointer++;
-	*pointer = (char*)malloc(sizeof(char)*charCount);//malloc
-	charCount = 0;
-}
-//counter for indv. chars
-//parallel for first loop but targetting words in line
-	//for (char* m = *q; *m; m++){ //count chars
-	//}
-}
-	char** curIndex = topCmdArray;
-	char* curChar = *curIndex;
+		if ((*q!=' ')) { //if no empty spaces, up char counter and ensure space counter is at 0
+		charCount++;
+		spacesPresent = 0;
+		}
+
+		else if (!spacesPresent){ //if no spaces prior to this, then keep going
+		spacesPresent++;
+		*pointer = (char*)malloc(sizeof(char)*charCount);//malloc
+		pointer++;
+		charCount = 1;
+		}
+
+	//counter for indv. chars
+	//parallel for first loop but targetting words in line
+	}
+
+	char** pointerToPointer = topCmdArray; //topCmdArray first pointer
+	char* mainPointer = *topCmdArray;
+//	char* secondMain = mainPointer; //this was an attempt to make a copy of the dereferenced pointer
 	int spaceCount = 0;
-	for (char** s = topCmdArray; *s; s++) {
-		for (char* h = *s; *s; h++){ //h being single char
-		
-			if (*h != ' ') { //copy in a letter
-				spaceCount = 0;
-				curChar = h;
-				curChar++;
-			}
+	int counter = 0;
+	for (char* q = line; *q; q++){
+		counter++;
 
-			else if  (!spaceCount) { //when dealing with spaces
-				h++;
-				h =  NULL;
-				spaceCount++;
-				curIndex++;
-				curChar = *curIndex;
-			}
+		if (*q != ' ') { //copy in a letter
+			spaceCount = 0;
+			*mainPointer = *q;
+			mainPointer++;
+		}
+
+                else if  (!spaceCount && !(counter == (totalChars-1))) { //when dealing with spaces
+			*mainPointer =  '\0';
+			mainPointer++;
+			spaceCount++;
+			pointerToPointer++;
+			mainPointer = *pointerToPointer;
+                 }
+
+		if (counter == (totalChars-1)) { //decrement by one to account for null pointer at end
+			*mainPointer = '\0'; //nullify
+                        mainPointer++;
+                        spaceCount++;
+                        pointerToPointer++;
+                        mainPointer = *pointerToPointer;
 		}
 
 	}
-return topCmdArray;}
+
+//catch case
+*pointerToPointer = NULL;
+
+return topCmdArray;
+
+}
 
 /**
  * command_show:
@@ -130,18 +157,20 @@ return topCmdArray;}
  * - command: a non-NULL pointer to the command array to print.
  */
 void command_show(char** command) {
-  // Check argument: must be non-NULL pointer.
-  assert(command);
-  //printf("%s %s %\n", command,command++,command+2);
+// Check argument: must be non-NULL pointer.
+assert(command);
+//printf("%s %s %\n", command,command++,command+2);
+
   for (char** q = command; *q; q++) {
 	printf("'");
 	for (char* p = *q; *p; p++) { //make p a char*/string
-		printf("%c",*p);
+	printf("%c",*p);
   	}
+
   printf("' ");
   }
   printf("\n");
-}
+  }
 /**
  * command_print:
  *
@@ -154,18 +183,14 @@ void command_show(char** command) {
  */
 void command_print(char** command) {
   // Check argument: must be non-NULL pointer.
-  assert(command);
-  for (char** q = command; *q; q++) {
-	for (char* p = *q; *p; p++) { //make p a char*/string
-		printf("%c",*p);
-         }
-   printf(" ");
-   }
-  // printf("\n");
+assert(command);
 
-  //for (char* p = *command; *p; p++) {
-//	printf("%c",*p);
- // }
+	for (char** q = command; *q; q++) {
+		for (char* p = *q; *p; p++) { //make p a char*/string
+		printf("%c",*p);
+        	}
+   	printf(" ");
+   	}
 
 }
 
@@ -178,15 +203,16 @@ void command_print(char** command) {
  *
  * - command: non-NULL pointer to the command array to free.
  */
+
+//mimic and reverse the flow of our malloc process
 void command_free(char** command) {
-  // Check argument: must be non-NULL pointer.
-  assert(command);
-        // for (char** q = line; *q; q++){
- //int charCount = 0;
- //counter for indv. chars
- //parallel for first loop but targetting words in line
- //        for (char* m = *n; *m; m++){ 
- //        charCount++;
- //}       
- //        free(char*)((charCount + 1) * char);
-}
+// Check argument: must be non-NULL pointer.
+assert(command);
+
+//free entire command arrays as final step hence the dereference
+	for (char** a = command; *a; a++) {
+	free(*a);
+	}
+
+	free(command);
+	}
