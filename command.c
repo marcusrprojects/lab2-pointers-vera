@@ -114,7 +114,7 @@ int totalChars = 0;
 	int spaceCount = 0;
 	int firstCounter = 0;
 	for (char* character = line; *character; character++){
-		counter++;
+		firstCounter++;
 
 		if (*character != ' ') { //copy in a letter
 			spaceCount = 0;
