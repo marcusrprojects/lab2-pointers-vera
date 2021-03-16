@@ -47,7 +47,7 @@ int *foreground = 1;
 int ampersandPresent = 0;
 int spacesPresent = 0;
 
-	for (char* q = line; *q; q++){ //gives us chars
+	for (char* charac = line; *charac; charac++){ //gives us chars
 	//replaced w line (cmd)
 	//look through command array (from command line)
 	//for (char* p = *q; *p; p++){
@@ -55,20 +55,20 @@ int spacesPresent = 0;
 
 	//Here we check for foreground/background status and hence the validity of different statements
 
-		if (ampersandPresent && (*q != ' ')){
+		if (ampersandPresent && (*charac != ' ')){
 		//printf("Invalid word.");
 		return NULL;  //null for invalid
 		}
 
 		//sets foreground status if & symbol is there
 
-		if (*q == '&') {
+		if (*charac == '&') {
 		ampersandPresent++;
 		*foreground = 0;
 		}
 
 		//space count used to travel through 
-		if (*q == ' ') {
+		if (*charac == ' ') {
 		spacesPresent++;
 		}
 
@@ -84,23 +84,23 @@ wordCount++;
 char** topCmdArray = (char**)malloc(sizeof(char*) * (wordCount + 1)); //stores words
 //start at larger level
 
-char** pointer = topCmdArray;
+char** arPointer = topCmdArray;
 spacesPresent = 0;
 int charCount = 1; //start with 1 to represent null char at end of string
 int totalChars = 0;
 
-	for (char* q = line; *q; q++){ //gives chars as *q
+	for (char* character = line; *character; character++){ //gives chars as *q
 	totalChars++;
 
-		if ((*q!=' ')) { //if no empty spaces, up char counter and ensure space counter is at 0
+		if ((*character!=' ')) { //if no empty spaces, up char counter and ensure space counter is at 0
 		charCount++;
 		spacesPresent = 0;
 		}
 
 		else if (!spacesPresent){ //if no spaces prior to this, then keep going
 		spacesPresent++;
-		*pointer = (char*)malloc(sizeof(char)*charCount);//malloc
-		pointer++;
+		*arPointer = (char*)malloc(sizeof(char)*charCount);//malloc
+		arPointer++;
 		charCount = 1;
 		}
 
@@ -112,17 +112,17 @@ int totalChars = 0;
 	char* mainPointer = *topCmdArray;
 //	char* secondMain = mainPointer; //this was an attempt to make a copy of the dereferenced pointer
 	int spaceCount = 0;
-	int counter = 0;
-	for (char* q = line; *q; q++){
+	int firstCounter = 0;
+	for (char* character = line; *character; character++){
 		counter++;
 
-		if (*q != ' ') { //copy in a letter
+		if (*character != ' ') { //copy in a letter
 			spaceCount = 0;
-			*mainPointer = *q;
+			*mainPointer = *character;
 			mainPointer++;
 		}
 
-                else if  (!spaceCount && !(counter == (totalChars-1))) { //when dealing with spaces
+                else if  (!spaceCount && !(firstCounter == (totalChars-1))) { //when dealing with spaces
 			*mainPointer =  '\0';
 			mainPointer++;
 			spaceCount++;
@@ -130,7 +130,7 @@ int totalChars = 0;
 			mainPointer = *pointerToPointer;
                  }
 
-		if (counter == (totalChars-1)) { //decrement by one to account for null pointer at end
+		if (firstCounter == (totalChars-1)) { //decrement by one to account for null pointer at end
 			*mainPointer = '\0'; //nullify
                         mainPointer++;
                         spaceCount++;
@@ -161,10 +161,10 @@ void command_show(char** command) {
 assert(command);
 //printf("%s %s %\n", command,command++,command+2);
 
-  for (char** q = command; *q; q++) {
+  for (char** cmdPointer = command; *cmdPointer; cmdPointer++) {
 	printf("'");
-	for (char* p = *q; *p; p++) { //make p a char*/string
-	printf("%c",*p);
+	for (char* str = *cmdPointer; *str; str++) { //make p a char*/string
+	printf("%c",*str);
   	}
 
   printf("' ");
@@ -185,9 +185,9 @@ void command_print(char** command) {
   // Check argument: must be non-NULL pointer.
 assert(command);
 
-	for (char** q = command; *q; q++) {
-		for (char* p = *q; *p; p++) { //make p a char*/string
-		printf("%c",*p);
+	for (char** cmdPointer = command; *cmdPointer; cmdPointer++) {
+		for (char* str = *cmdPointer; *str; str++) { //make p a char*/string
+		printf("%c",*str);
         	}
    	printf(" ");
    	}
@@ -210,8 +210,8 @@ void command_free(char** command) {
 assert(command);
 
 //free entire command arrays as final step hence the dereference
-	for (char** a = command; *a; a++) {
-	free(*a);
+	for (char** cmdPointer = command; *cmdPointer; cmdPointer++) {
+	free(*cmdPointer);
 	}
 
 	free(command);
