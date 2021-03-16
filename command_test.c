@@ -46,7 +46,7 @@ static char** COMMAND_ARRAYS[] = {
 static char* COMMAND_LINES[] = {
   "Hello world!  Please parse    me.",
   " & this is invalid",
-  "YOUR COMMAND LINE HERE",
+  "YOUR COMMAND LINE HERE&",
 };
 
 static char* CMD_TEST1[] = {
@@ -74,9 +74,9 @@ void test_all(char* command) {
   int foreground;
   char** c;
   printf("Parsing: \"%s\"\n", command);
-  c = command_parse(command, &foreground);
+  c = command_parse(command, &foreground); //char* line, int* foreground
   if (c) {
-    printf("Command type: %s\n", (foreground ? "foreground" : "background"));
+    printf("Command type: %s\n", (foreground ? "foreground" : "background")); //foreground if foreground
     command_show(c);
     printf("As command line: ");
     command_print(c);
