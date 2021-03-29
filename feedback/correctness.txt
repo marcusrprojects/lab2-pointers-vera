@@ -1,0 +1,570 @@
+Running 100 tests
+Testing command "Hello world!  Please parse    me."
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "emacs"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "emacs "
+[pass]
+
+Testing command " emacs"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " emacs "
+  Error: command array has 2 words (expected 1)
+  Error: command array word 0 is empty and incorrect (expected "emacs")
+  Error: command array word 1 is extra and incorrect (expected only 1 words), seems to match expected word 0 ("emacs")
+command array:
+  0. ""
+  1. "emac"[...]
+end
+[!] TEST FAILED
+
+Testing command "cat shell.c command.h Makefile"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "   echo hello world"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "   echo hello   world"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "   echo   hello world"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "   echo   hello   world"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "   echo hello   world   "
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "echo   hello world  "
+[pass]
+
+Testing command ""
+[pass]
+
+Testing command "a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "a "
+[pass]
+
+Testing command " a "
+  Error: command array has 2 words (expected 1)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is extra and incorrect (expected only 1 words), seems to match expected word 0 ("a")
+command array:
+  0. ""
+  1. "a"
+end
+[!] TEST FAILED
+
+Testing command "  a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "a  "
+[pass]
+
+Testing command " a  "
+  Error: command array has 2 words (expected 1)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is extra and incorrect (expected only 1 words), seems to match expected word 0 ("a")
+command array:
+  0. ""
+  1. "a"
+end
+[!] TEST FAILED
+
+Testing command "  a "
+  Error: command array has 2 words (expected 1)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is extra and incorrect (expected only 1 words), seems to match expected word 0 ("a")
+command array:
+  0. ""
+  1. "a"
+end
+[!] TEST FAILED
+
+Testing command "  a  "
+  Error: command array has 2 words (expected 1)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is extra and incorrect (expected only 1 words), seems to match expected word 0 ("a")
+command array:
+  0. ""
+  1. "a"
+end
+[!] TEST FAILED
+
+Testing command "a bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " a bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "a bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " a bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  a bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "a  bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " a  bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  a bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  a  bc"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "a bc  "
+[pass]
+
+Testing command " a bc  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "bc"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("bc")
+command array:
+  0. ""
+  1. "a"
+  2. "bc"
+end
+[!] TEST FAILED
+
+Testing command "a bc  "
+[pass]
+
+Testing command " a bc  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "bc"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("bc")
+command array:
+  0. ""
+  1. "a"
+  2. "bc"
+end
+[!] TEST FAILED
+
+Testing command "  a bc  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "bc"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("bc")
+command array:
+  0. ""
+  1. "a"
+  2. "bc"
+end
+[!] TEST FAILED
+
+Testing command "a  bc  "
+[pass]
+
+Testing command " a  bc  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "bc"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("bc")
+command array:
+  0. ""
+  1. "a"
+  2. "bc"
+end
+[!] TEST FAILED
+
+Testing command "  a bc  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "bc"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("bc")
+command array:
+  0. ""
+  1. "a"
+  2. "bc"
+end
+[!] TEST FAILED
+
+Testing command "  a  bc  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "bc"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("bc")
+command array:
+  0. ""
+  1. "a"
+  2. "bc"
+end
+[!] TEST FAILED
+
+Testing command "bc a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " bc a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "bc a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " bc a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  bc a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "bc  a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " bc  a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  bc a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  bc  a"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "bc a  "
+[pass]
+
+Testing command " bc a  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "bc")
+  Error: command array word 1 is incorrect (expected "a"), seems to match expected word 0 ("bc")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("a")
+command array:
+  0. ""
+  1. "bc"
+  2. "a"
+end
+[!] TEST FAILED
+
+Testing command "bc a  "
+[pass]
+
+Testing command " bc a  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "bc")
+  Error: command array word 1 is incorrect (expected "a"), seems to match expected word 0 ("bc")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("a")
+command array:
+  0. ""
+  1. "bc"
+  2. "a"
+end
+[!] TEST FAILED
+
+Testing command "  bc a  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "bc")
+  Error: command array word 1 is incorrect (expected "a"), seems to match expected word 0 ("bc")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("a")
+command array:
+  0. ""
+  1. "bc"
+  2. "a"
+end
+[!] TEST FAILED
+
+Testing command "bc  a  "
+[pass]
+
+Testing command " bc  a  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "bc")
+  Error: command array word 1 is incorrect (expected "a"), seems to match expected word 0 ("bc")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("a")
+command array:
+  0. ""
+  1. "bc"
+  2. "a"
+end
+[!] TEST FAILED
+
+Testing command "  bc a  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "bc")
+  Error: command array word 1 is incorrect (expected "a"), seems to match expected word 0 ("bc")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("a")
+command array:
+  0. ""
+  1. "bc"
+  2. "a"
+end
+[!] TEST FAILED
+
+Testing command "  bc  a  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "bc")
+  Error: command array word 1 is incorrect (expected "a"), seems to match expected word 0 ("bc")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("a")
+command array:
+  0. ""
+  1. "bc"
+  2. "a"
+end
+[!] TEST FAILED
+
+Testing command "a b"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command " a b"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "a b "
+[pass]
+
+Testing command " a b "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "b"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("b")
+command array:
+  0. ""
+  1. "a"
+  2. "b"
+end
+[!] TEST FAILED
+
+Testing command "  a  b  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "b"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("b")
+command array:
+  0. ""
+  1. "a"
+  2. "b"
+end
+[!] TEST FAILED
+
+Testing command "emacs &"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "emacs&   "
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "sleep 10&"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "sleep 10 &"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "sleep 10  &"
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "sleep 10& "
+  Error: command array word 1 is incorrect (expected "10")
+  Error: command array word 1 contains '&'
+command array:
+  0. "sleep"
+  1. "10&"
+end
+[!] TEST FAILED
+
+Testing command "sleep 10 & "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, contains '&', and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. "&"
+end
+[!] TEST FAILED
+
+Testing command "sleep 10  & "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 2 is extra, contains '&', and incorrect (expected only 2 words)
+command array:
+  0. "sleep"
+  1. "10"
+  2. "&"
+end
+[!] TEST FAILED
+
+Testing command "sleep 10&   "
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "sleep 10 &   "
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "sleep 10  &   "
+  Error: test segfault
+[!] TEST FAILED
+
+Testing command "  a  b  &  "
+  Error: command array has 3 words (expected 2)
+  Error: command array word 0 is empty and incorrect (expected "a")
+  Error: command array word 1 is incorrect (expected "b"), seems to match expected word 0 ("a")
+  Error: command array word 2 is extra and incorrect (expected only 2 words), seems to match expected word 1 ("b")
+command array:
+  0. ""
+  1. "a"
+  2. "b"
+end
+[!] TEST FAILED
+
+Testing command "&uhoh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "   &uhoh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "&uhoh   "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  &uhoh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  & uh oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  & uh oh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  &   uh oh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh&oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh& oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh & oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh &oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh&oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh& oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh & oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh &oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh&oh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh& oh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh & oh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh &oh  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh& &oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh&&"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh &&"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh & &"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh &  &"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh &  &  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Summary: all tests..........12 passed / 100 done / 100 total
+  Valid foreground tests....12 passed / 63 done / 63 total
+  Valid background tests....0 passed / 12 done / 12 total
+  All invalid tests.........0 passed / 25 done / 25 total
+Summary: all errors.........133
+  Command validity errors...0
+  Command status errors.....25
+  Command malloc errors.....0
+  Command length errors.....20 (+2 due to '&')
+  Command word errors.......40 (+3 due to '&', 61 words expected)
+  Command ampersand errors..3
+  Test timeouts.............0
+  Test segfaults............40
+  Test aborts...............0

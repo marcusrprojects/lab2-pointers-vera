@@ -1,0 +1,47 @@
+==2099== Memcheck, a memory error detector
+==2099== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2099== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2099== Command: ./command_test
+==2099== 
+Setting timeout for 10 seconds
+Running 100 tests with static sources
+Test 0
+Parsing: "Hello world!  Please parse    me."
+==2099== Use of uninitialised value of size 8
+==2099==    at 0x400CE9: command_parse (command.c:122)
+==2099==    by 0x400934: test_all (command_test.c:138)
+==2099==    by 0x400AC9: main (command_test.c:172)
+==2099== 
+==2099== Invalid write of size 1
+==2099==    at 0x400CE9: command_parse (command.c:122)
+==2099==    by 0x400934: test_all (command_test.c:138)
+==2099==    by 0x400AC9: main (command_test.c:172)
+==2099==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==2099== 
+==2099== 
+==2099== Process terminating with default action of signal 11 (SIGSEGV)
+==2099==  Access not within mapped region at address 0x0
+==2099==    at 0x400CE9: command_parse (command.c:122)
+==2099==    by 0x400934: test_all (command_test.c:138)
+==2099==    by 0x400AC9: main (command_test.c:172)
+==2099==  If you believe this happened as a result of a stack
+==2099==  overflow in your program's main thread (unlikely but
+==2099==  possible), you can try to increase the size of the
+==2099==  main thread stack using the --main-stacksize= flag.
+==2099==  The main thread stack size used in this run was 8388608.
+==2099== 
+==2099== HEAP SUMMARY:
+==2099==     in use at exit: 74 bytes in 5 blocks
+==2099==   total heap usage: 5 allocs, 0 frees, 74 bytes allocated
+==2099== 
+==2099== LEAK SUMMARY:
+==2099==    definitely lost: 0 bytes in 0 blocks
+==2099==    indirectly lost: 0 bytes in 0 blocks
+==2099==      possibly lost: 0 bytes in 0 blocks
+==2099==    still reachable: 74 bytes in 5 blocks
+==2099==         suppressed: 0 bytes in 0 blocks
+==2099== Rerun with --leak-check=full to see details of leaked memory
+==2099== 
+==2099== Use --track-origins=yes to see where uninitialised values come from
+==2099== For lists of detected and suppressed errors, rerun with: -s
+==2099== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

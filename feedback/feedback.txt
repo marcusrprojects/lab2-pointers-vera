@@ -1,0 +1,22 @@
+Functional correctness: 12 of 100 tests passed
+	(see correctness.txt for details)
+
+Memory issues: segfaults and some Valgrind errors
+	(see memory.txt for details)
+
+Pointer style violations: none
+	(see style.txt for details)
+
+Comments:
+
+-Had to fix some compiler errors to test (see build.txt for details). Always make sure your submitted program compiles as-is.
+
+-Many of the tests (including basic ones) crashed your library with a segmentation fault. Make sure you're testing enough to expose these cases and use GDB to debug them (which will tell you where the segfault is occurring).
+
+-Code indentation is quite messy, which looks like it's partially or primarily a result of mixing tabs and spaces for indentation. Use only one or the other, as tabs do not display consistently across editors (so when I open your file in my editor, the indentation is a mess due to the differently sized tabs even if it looks fine in your editor).  Using only one or the other will ensure that it displays consistently.
+
+-No need to loop over individual chars in show/print; just use printf "%s" to print out each whole string at once.
+
+-Please come talk to me if you are struggling with pointers, memory, or anything else in the lab; these topics will keep coming up throughout the semester, so it's essential that confusion is addressed as early as possible.
+
+Score: 70/100
